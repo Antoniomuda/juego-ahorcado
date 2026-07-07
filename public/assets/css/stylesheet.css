@@ -1,0 +1,590 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+
+
+/* estilos de app.blade */
+
+body {
+    background-color: #1a1917;
+    color: #e8e4dc;
+    font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+    background-color: #1a1917 !important;
+    border-bottom: 0.5px solid #2e2c28;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #c0392b !important;
+    font-size: 22px;
+}
+
+.nav-link {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888780 !important;
+}
+
+.nav-link:hover {
+    color: #c0392b !important;
+}
+
+.dropdown-menu {
+    background-color: #2e2c28;
+    border: 0.5px solid #3d3b36;
+}
+
+.dropdown-item {
+    color: #e8e4dc;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.dropdown-item:hover {
+    background-color: #3d3b36;
+    color: #c0392b;
+}
+
+/* estilo del card de las imagenes del ahorcado */
+
+.hangman-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+/* estilos del teclado virtual: */
+
+.game-card {
+    background-color: #111110;
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 16px;
+}
+
+.palabra-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    letter-spacing: 8px;
+    text-align: center;
+    margin: 20px 0 28px;
+    color: #e8e4dc;
+}
+
+.teclado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.teclado-fila {
+    display: flex;
+    gap: 6px;
+}
+
+.tecla {
+    width: 42px;
+    height: 46px;
+    background: #2e2c28;
+    border-radius: 6px;
+    border: 0.5px solid #3d3b36;
+    color: #e8e4dc;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.15s;
+}
+
+.tecla:hover:not(:disabled) {
+    background: #3d3b36;
+}
+
+.tecla.correcta {
+    background: #c0392b;
+    border-color: #c0392b;
+    color: #fff;
+}
+
+.tecla.incorrecta {
+    background: #1e1e1c;
+    color: #444;
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
+
+.game-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 0.5px solid #2e2c28;
+}
+
+.intentos-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888780;
+}
+
+.btn-accion {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c0392b;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-accion:disabled {
+    color: #444;
+    cursor: not-allowed;
+}
+
+.btn-nueva-partida {
+    background-color: #111110;
+    border: 0.5px solid #2e2c28;
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 16px;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #e8e4dc;
+    text-decoration: none;
+    display: block;
+}
+
+.btn-nueva-partida:hover {
+    border-color: #c0392b;
+    color: #e8e4dc;
+}
+
+.mensaje-resultado {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #e8e4dc;
+}
+
+.pista-texto {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888780;
+    text-align: center;
+    margin-top: 8px;
+    min-height: 20px;
+}
+
+/*  boton resolver partida */
+
+.resolver-input {
+    background: #2e2c28;
+    border: 0.5px solid #3d3b36;
+    border-radius: 6px;
+    color: #e8e4dc;
+    padding: 10px 14px;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    width: 100%;
+    margin-top: 12px;
+    display: none;
+}
+
+.resolver-input:focus {
+    outline: none;
+    border-color: #c0392b;
+}
+
+/* vista de la puntuacion de las partidas*/
+.page-header-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 6px;
+}
+
+.page-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #e8e4dc;
+}
+
+.page-container {
+    max-width: 700px;
+    padding: 24px 16px;
+}
+
+.numero-cell {
+    color: #555;
+}
+
+.puntos-cell {
+    color: #c0392b;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+}
+
+.total-puntos-cell {
+    color: #e8e4dc;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+}
+
+.stat-card-value-verde {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #4caf50;
+}
+
+.stat-card-value-rojo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #c0392b;
+}
+
+.no-partidas {
+    text-align: center;
+    padding: 40px;
+    color: #555;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background-color: #111110;
+    border-radius: 8px;
+    padding: 16px;
+    border: 0.5px solid #2e2c28;
+}
+
+.stat-card-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.stat-card-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #e8e4dc;
+}
+
+.partidas-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.partidas-table thead tr {
+    border-bottom: 0.5px solid #2e2c28;
+}
+
+.partidas-table th {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #555;
+    padding: 10px 12px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.partidas-table td {
+    padding: 14px 12px;
+    border-bottom: 0.5px solid #2e2c28;
+    color: #e8e4dc;
+    font-size: 14px;
+}
+
+.partidas-table .palabra-cell {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.badge-ganada {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background-color: #1a2e1a;
+    color: #4caf50;
+    border: 0.5px solid #2e4a2e;
+}
+
+.badge-perdida {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background-color: #2e1a1a;
+    color: #c0392b;
+    border: 0.5px solid #4a2e2e;
+}
+
+.table-footer-row td {
+    padding: 14px 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #888780;
+    border-top: 0.5px solid #3d3b36;
+}
+
+/* partidas inacabadas */
+
+
+.partida-card {
+    background-color: #111110;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 0.5px solid #2e2c28;
+    text-decoration: none;
+}
+
+.partida-card:hover {
+    border-color: #c0392b;
+}
+
+.partida-palabra {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #e8e4dc;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.partida-meta {
+    font-size: 12px;
+    color: #555;
+    letter-spacing: 0.5px;
+}
+
+.btn-reanudar {
+    background-color: #2e2c28;
+    border: 0.5px solid #3d3b36;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #e8e4dc;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-reanudar:hover {
+    border-color: #c0392b;
+    color: #c0392b;
+}
+
+/*  login */
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    background-color: #111110;
+    border-radius: 10px;
+    padding: 40px;
+    border: 0.5px solid #2e2c28;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-title {
+
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #e8e4dc;
+    margin-bottom: 8px;
+
+}
+
+.login-subtitle {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #555;
+    margin-bottom: 32px;
+}
+
+.login-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.login-input {
+    width: 100%;
+    background-color: #1a1917;
+    border: 0.5px solid #3d3b36;
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: #e8e4dc;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #c0392b;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: #c0392b;
+    border: none;
+    border-radius: 6px;
+    padding: 13px;
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin-top: 8px;
+}
+
+.login-btn:hover {
+    background-color: #a93226;
+}
+
+.login-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #555;
+    text-decoration: none;
+}
+
+.login-link span {
+    color: #c0392b;
+}
+
+.login-error {
+    background-color: #2e1a1a;
+    border: 0.5px solid #4a2e2e;
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: #c0392b;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+
+.login-field-error {
+    font-size: 11px;
+    color: #c0392b;
+    letter-spacing: 0.5px;
+    margin-top: -14px;
+    margin-bottom: 14px;
+    display: block;
+}
+
+/* form perfil */
+
+.login-select {
+    width: 100%;
+    background-color: #1a1917;
+    border: 0.5px solid #3d3b36;
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: #e8e4dc;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+}
+
+.login-select:focus {
+    outline: none;
+    border-color: #c0392b;
+}
+
+.login-check-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888780;
+    margin-left: 8px;
+}
+
+/*  resultado de la busqueda de partidas */
+
+.partida-encontrada-card {
+    background-color: #111110;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    border: 0.5px solid #2e2c28;
+}
+
+.partida-encontrada-card:hover {
+    border-color: #3d3b36;
+}
+
+.partida-encontrada-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.partida-encontrada-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.partida-encontrada-meta span {
+    color: #888780;
+}
